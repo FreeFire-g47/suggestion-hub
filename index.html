@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suggestion Hub</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: white;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        span{
+          color: rgb(0, 0, 0);
+        }
+        header {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 20px; /* Reduced padding for mobile */
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em; /* Smaller for mobile */
+            color: #000000;
+            font-family:s;
+        }
+
+        header h2 {
+            margin: 0;
+            font-size: 1.5em; /* Smaller for mobile */
+            color: #00ff1e;
+        }
+        .login-btn {
+            
+            
+            
+            background: #000000;
+            color: white;
+            padding: 8px 15px; /* Smaller for mobile */
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 14px; /* Adjusted for mobile */
+            transition: background 0.3s;
+        }
+        .login-btn:hover {
+            background: #000000;
+        }
+
+        .AD {
+            width: 47PX;
+            background: #000000;
+            color: white;
+            padding: 8px 15px; /* Smaller for mobile */
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 14px; /* Adjusted for mobile */
+            transition: background 0.3s;
+        }
+
+        .ADD:hover {
+            background: #f15101;
+        }
+        .ADD {
+            background: #000000;
+            color: white;
+            padding: 8px 15px; /* Smaller for mobile */
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 14px; /* Adjusted for mobile */
+            transition: background 0.3s;
+        }
+
+        .ADD:hover {
+            background: #f15101;
+        }
+        .vote {
+            background: #000000;
+            color: white;
+            padding: 8px 15px; /* Smaller for mobile */
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 14px; /* Adjusted for mobile */
+            transition: background 0.3s;
+        }
+
+
+        .vote:hover {
+            background: #000000;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 10px; /* Reduced padding for mobile */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted for mobile */
+            gap: 15px; /* Smaller gap for mobile */
+        }
+        .suggestion-card {
+
+            background: linear-gradient(135deg, #ffffff 20%, #ffa034 100%);
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+
+        }
+        .suggestion-card:hover {
+            transform: translateY(-5px);
+        }
+        .suggestion-card img {
+            width: 100%;
+            height: 150px; /* Shorter for mobile */
+            object-fit: cover;
+        }
+        .suggestion-card h3 {
+            margin: 10px 15px;
+            color: #000000;
+            font-size: 1.2em; /* Adjusted for mobile */
+        }
+        .suggestion-card p {
+            margin: 0 15px 10px;
+            line-height: 1.5;
+            font-size: 14px; /* Smaller for mobile */
+        }
+        .vote-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 15px;
+        }
+        .vote-count {
+            font-weight: bold;
+            color: #667eea;
+        }
+        .vote-btn {
+            padding: 8px 15px; /* Larger for touch */
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .vote-btn:hover {
+            background: #5a67d8;
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        /* Mobile-specific styles */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+            .container {
+                grid-template-columns: 1fr; /* Single column on mobile */
+                padding: 5px;
+            }
+            .suggestion-card img {
+                height: 120px;
+            }
+            .vote-btn {
+                font-size: 16px; /* Larger for touch */
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+  
+    <header>
+        
+        
+        <img src="https://logosdown.com/wp-content/uploads/2023/08/free-fire-logo-0-2048x2048-1.png" style="width:250px;height:330px;">
+        
+        
+        <h1>Suggestion Hub</h1>  
+        <P>
+            <a href="login.html" class="ADD">ADD Suggestion</a></P>
+        
+    </header>
+    
+    <div class="container">
+        <div class="suggestion-card" data-id="1">
+            
+            <img src="https://dl.dir.freefiremobile.com/common/web_event/official2.ff.garena.all/202510/4c15e2a0cacd26a6656050c634e111da.jpg" style="width:760px;height:400px;">
+            
+            <h3>WIZZI_BANKS Suggestion</h3>
+            <p>Reduced top-up price to 50%.</p>
+            <div class="vote-section">
+                <span class="vote-count">Votes: <span id="votes-1">99,560/100,000</span></span>
+                <a href="login.html" class="vote">VOTE</a>
+            </div>
+        </div>
+        
+        <div class="container">
+        <div class="suggestion-card" data-id="1">
+            
+            <img src="https://dl.dir.freefiremobile.com/common/web_event/official2.ff.garena.all/202510/4c15e2a0cacd26a6656050c634e111da.jpg" style="width:760px;height:400px;">
+            
+            <h3>]PAIN[ Suggestions</h3>
+            <p>Free evo gun for prime 3 and above.</p>
+            <div class="vote-section">
+                <span class="vote-count">Votes: <span id="votes-1">99,678/100,000</span></span>
+                <a href="login.html" class="vote">VOTE</a>
+            </div>
+        </div>
+
+<div class="container">
+        <div class="suggestion-card" data-id="1">
+            
+            <img src="https://dl.dir.freefiremobile.com/common/web_event/official2.ff.garena.all/202510/4c15e2a0cacd26a6656050c634e111da.jpg" style="width:760px;height:400px;">
+            
+            <h3>leo300304-ff Suggestions</h3>
+            <p>communication with enemies.</p>
+            <div class="vote-section">
+                <span class="vote-count">Votes: <span id="votes-1">99,565/100,000</span></span>
+                <a href="login.html" class="vote">VOTE</a>
+            </div>
+        </div>
+
+        <a href="login.html" class="AD">MORE...</a>
+        
+    </div>
+    
+    <footer>
+        <img src="https://crystalpng.com/wp-content/uploads/2025/09/garena-logo.png" style="width:100px;height:100px;">
+        <p>&copy; 2025 Free fire Suggestion Hub. powered by Garena.</p>
+    </footer>
+
+    
+</body>
+</html>

